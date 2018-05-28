@@ -1,0 +1,137 @@
+\begin{thebibliography}{10}
+
+\bibitem{Pecan2018}
+{Dataport from Pecan Street}.
+
+\bibitem{Babrowski2014}
+{\sc Babrowski, S., Heinrichs, H., Jochem, P., and Fichtner, W.}
+\newblock {Load shift potential of electric vehicles in Europe}.
+\newblock {\em Journal of Power Sources 255\/} (2014), 283--293.
+
+\bibitem{Dheeru2017}
+{\sc Bache, K., and Lichman, M.}
+\newblock {UCI Machine Learning Repository}, 2013.
+
+\bibitem{Norskelbilforening2018}
+{\sc elbilforening, N.}
+\newblock {Elbilstatistikk}, 2018.
+
+\bibitem{EuropeanCommision2018}
+{\sc {European Commision Joint Research Centre}}.
+\newblock {Smart Metering deployment in the European Union}.
+
+\bibitem{EVvolu}
+{\sc {EV Volumes}}.
+\newblock {Global Plug-in Vehicle Sales for 2017 – Final Results}, 2018.
+
+\bibitem{Garey1979}
+{\sc {Garey, M. R.}, and Johnson, D.~S.}
+\newblock {\em {Computers and In- tractability : A Guide to the Theory of
+  NP-Completeness}}.
+\newblock W. H. Freeman, 1990.
+
+\bibitem{GlobalGreens}
+{\sc {Global Greens}}.
+\newblock {Global Greens}, 2018.
+
+\bibitem{Hart1992}
+{\sc Hart, G.~W.}
+\newblock {Nonintrusive Appliance Load Monitoring}.
+\newblock {\em Proceedings of the IEEE 80}, 12 (1992), 1870--1891.
+
+\bibitem{Jia2015}
+{\sc Jia, R., Gao, Y., and Spanos, C.~J.}
+\newblock {A Fully Unsupervised Nonintrusive Load Monitoring Framework}.
+\newblock {\em Proceeding of the IEEE International Conference on Smart Grid
+  Communications (SmartGridComm)\/} (2015), 872--878.
+
+\bibitem{Kelly2015c}
+{\sc Kelly, J., and Knottenbelt, W.}
+\newblock {Neural NILM: Deep Neural Networks Applied to Energy Disaggregation}.
+\newblock {\em Arxiv\/} (2015), 55--64.
+
+\bibitem{Kelly2015}
+{\sc Kelly, J., and Knottenbelt, W.}
+\newblock {The UK-DALE dataset, domestic appliance-level electricity demand and
+  whole-house demand from five UK homes}.
+\newblock {\em Scientific Data 2\/} (2015), 150007.
+
+\bibitem{Kolter2011}
+{\sc Kolter, J.~Z., and Johnson, M.~J.}
+\newblock {REDD : A Public Data Set for Energy Disaggregation Research}.
+\newblock {\em SustKDD workshop xxxxx}, 1 (2011), 1--6.
+
+\bibitem{Krizhevsky2012}
+{\sc Krizhevsky, A., Sutskever, I., and {Geoffrey E.}, H.}
+\newblock {ImageNet Classification with Deep Convolutional Neural Networks}.
+\newblock {\em Advances in Neural Information Processing Systems 25
+  (NIPS2012)\/} (2012), 1--9.
+
+\bibitem{Lecun2015}
+{\sc Lecun, Y., Bengio, Y., and Hinton, G.}
+\newblock {Deep learning}.
+\newblock {\em Nature 521}, 7553 (2015), 436--444.
+
+\bibitem{Makonin2016}
+{\sc Makonin, S., Ellert, B., Baji{\'{c}}, I.~V., and Popowich, F.}
+\newblock {Electricity, water, and natural gas consumption of a residential
+  house in Canada from 2012 to 2014}.
+\newblock {\em Scientific Data 3\/} (2016), 1--12.
+
+\bibitem{Mauch2016}
+{\sc Mauch, L., and Yang, B.}
+\newblock {A new approach for supervised power disaggregation by using a deep
+  recurrent LSTM network}.
+\newblock {\em 2015 IEEE Global Conference on Signal and Information
+  Processing, GlobalSIP 2015\/} (2016), 63--67.
+
+\bibitem{Mullan2012a}
+{\sc Mullan, J., Harries, D., Br{\"{a}}unl, T., and Whitely, S.}
+\newblock {The technical, economic and commercial viability of the
+  vehicle-to-grid concept}.
+\newblock {\em Energy Policy 48\/} (2012), 394--406.
+
+\bibitem{RevueltaHerrero2018}
+{\sc {Revuelta Herrero}, J., {Lozano Murciego}, {\'{A}}., {L{\'{o}}pez
+  Barriuso}, A., {Hern{\'{a}}ndez de la Iglesia}, D., {Villarrubia
+  Gonz{\'{a}}lez}, G., {Corchado Rodr{\'{i}}guez}, J.~M., and Carreira, R.}
+\newblock {Non Intrusive Load Monitoring (NILM): A State of the Art}.
+\newblock In {\em Trends in Cyber-Physical Multi-Agent Systems. The PAAMS
+  Collection - 15th International Conference, PAAMS 2017}. Springer, Cham, jun
+  2018, pp.~125--138.
+
+\bibitem{Rumelhart1986}
+{\sc Rumelhart, D.~E., Hinton, G.~E., and Williams, R.~J.}
+\newblock {Learning representations by back-propagating errors}.
+\newblock {\em Nature 323}, 6088 (1986), 533--536.
+
+\bibitem{Sultanem1991}
+{\sc Sultanem, F.}
+\newblock {Using appliance signatures for monitoring residential loads at meter
+  panel level}.
+\newblock {\em IEEE Transactions on Power Delivery 6}, 4 (1991), 1380--1385.
+
+\bibitem{NorwegianMinistryofClimateandEnvironment2014}
+{\sc {The Norwegian Government}}.
+\newblock {Green shift – climate and environmentally friendly restructuring},
+  2014.
+
+\bibitem{Turin1960}
+{\sc Turin, G.~L.}
+\newblock {An Introduction to Matched Filters}.
+\newblock {\em IRE Transactions on Information Theory 6}, 3 (1960), 311--329.
+
+\bibitem{UNFCCC2015}
+{\sc UNFCCC}.
+\newblock {Report of the Conference of the Parties on its twenty-first session,
+  held in Paris from 30 November to 13 December 2015}.
+\newblock {\em Addendum-Part two: action taken by the Conference of the Parties
+  01194}, January (2015), 1--36.
+
+\bibitem{Zhang2011}
+{\sc Zhang, P., Zhou, C., Stewart, B.~G., Hepburn, D.~M., Zhou, W., and Yu, J.}
+\newblock {An Improved Non-Intrusive Load Monitoring Method for Recognition of
+  Electric Vehicle Battery Charging Load}.
+\newblock {\em Energy Procedia 12\/} (2011), 104--112.
+
+\end{thebibliography}

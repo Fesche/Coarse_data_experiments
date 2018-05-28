@@ -1,0 +1,68 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\providecommand \oddpage@label [2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Signature Discovery}{1}{chapter.1}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Data Preparation}{1}{section.1.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Raw Data}{1}{subsection.1.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces House area in square feet versus the household mean power use (gross). The shaded areas indicate one standard deviation of the power use. }}{2}{figure.1.1}}
+\newlabel{fig:house_stats_1}{{1.1}{2}{House area in square feet versus the household mean power use (gross). The shaded areas indicate one standard deviation of the power use}{figure.1.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces When grouped by length, the charging signatures across all houses display groupings in typical charging patterns, mostly defined by their maximum power drain. The y-axes here are the effect measured at the EV charger outtake in kW, while the x-axes are timesteps of 15 minutes.}}{3}{figure.1.2}}
+\newlabel{fig:all_signatures}{{1.2}{3}{When grouped by length, the charging signatures across all houses display groupings in typical charging patterns, mostly defined by their maximum power drain. The y-axes here are the effect measured at the EV charger outtake in kW, while the x-axes are timesteps of 15 minutes}{figure.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces The number of charging signatures extracted from each house plotted against the maximum signature length in hours. The red and yellow lines indicate respective medians.}}{4}{figure.1.3}}
+\newlabel{fig:signature_stats_1}{{1.3}{4}{The number of charging signatures extracted from each house plotted against the maximum signature length in hours. The red and yellow lines indicate respective medians}{figure.1.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Extracting Charging Signatures}{4}{subsection.1.2.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Typical signatures}{5}{section.1.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces The mean maximal signature value per house plotted as horizontal lines. Darker lines indicate more houses with the same value. }}{5}{figure.1.4}}
+\newlabel{fig:mean_peaks_1}{{1.4}{5}{The mean maximal signature value per house plotted as horizontal lines. Darker lines indicate more houses with the same value}{figure.1.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces The same plot, but with all signatures plotted individually instead of taking the mean for each house.}}{6}{figure.1.5}}
+\newlabel{fig:mean_peaks_2}{{1.5}{6}{The same plot, but with all signatures plotted individually instead of taking the mean for each house}{figure.1.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Clustering}{6}{subsection.1.3.1}}
+\newlabel{eq:k-means_1}{{1.3.1}{6}{Clustering}{subsection.1.3.1}{}}
+\newlabel{eq:k-means_2}{{1.3.1}{6}{Clustering}{subsection.1.3.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Choosing $k$}{7}{section.1.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Each grey line indicates the average silhouette score of a single signature length. The black line shows the mean of these scores. The value of $k$ I are interested in is the last value before the scores hit "bottom". }}{8}{figure.1.6}}
+\newlabel{fig:silhouette_1}{{1.6}{8}{Each grey line indicates the average silhouette score of a single signature length. The black line shows the mean of these scores. The value of $k$ I are interested in is the last value before the scores hit "bottom"}{figure.1.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces Each grey line represents the proportion of clusters falling completely beneath the average silhouette score for all signatures. The x-axis is the number of clusters in the clustering.}}{9}{figure.1.7}}
+\newlabel{fig:silhouette_2}{{1.7}{9}{Each grey line represents the proportion of clusters falling completely beneath the average silhouette score for all signatures. The x-axis is the number of clusters in the clustering}{figure.1.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces  The proportion of signature lengths which yield clusterings in which all clusters contain points above the global silhouette score average. The x-axis is the number of clusters in the clustering.}}{9}{figure.1.8}}
+\newlabel{fig:silhouette_3}{{1.8}{9}{The proportion of signature lengths which yield clusterings in which all clusters contain points above the global silhouette score average. The x-axis is the number of clusters in the clustering}{figure.1.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.5}Finding Templates}{10}{section.1.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces The resultant clusters with $k=7$ for signatures of length 2 hours 45 minutes. The heavy lines indicate cluster means, while the thin lines indicate individual signatures color-coded by cluster.}}{10}{figure.1.9}}
+\newlabel{fig:clustering_1}{{1.9}{10}{The resultant clusters with $k=7$ for signatures of length 2 hours 45 minutes. The heavy lines indicate cluster means, while the thin lines indicate individual signatures color-coded by cluster}{figure.1.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces The average coefficient of variation for each signature length; that is, the average standard deviation within each cluster normalized by mean signature value.}}{11}{figure.1.10}}
+\newlabel{fig:heterogenity}{{1.10}{11}{The average coefficient of variation for each signature length; that is, the average standard deviation within each cluster normalized by mean signature value}{figure.1.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces Sample resulting signature templates. Cluster 3 and 4 display an exponential decline, as seen clearly in the signatures of some households at higher resolution. The rest appear to be clustered by mean power drain.}}{12}{figure.1.11}}
+\newlabel{fig:clustering_2}{{1.11}{12}{Sample resulting signature templates. Cluster 3 and 4 display an exponential decline, as seen clearly in the signatures of some households at higher resolution. The rest appear to be clustered by mean power drain}{figure.1.11}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Signal Discovery: Neural networks}{13}{chapter.2}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Introduction}{13}{section.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Training Data}{13}{section.2.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Denoising Autoencoder}{14}{section.2.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces The training data for the denoiser. Given the input signal, the model will attempt to reconstruct the response.}}{15}{figure.2.1}}
+\newlabel{fig:denoiser_data}{{2.1}{15}{The training data for the denoiser. Given the input signal, the model will attempt to reconstruct the response}{figure.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Sample denoiser predictions given the aggregate signal as input. Notice that the denoiser is prone to being fooled by certain high-consumption signals, such as in the beginning of the rightmost example.}}{16}{figure.2.2}}
+\newlabel{fig:denoiser_output}{{2.2}{16}{Sample denoiser predictions given the aggregate signal as input. Notice that the denoiser is prone to being fooled by certain high-consumption signals, such as in the beginning of the rightmost example}{figure.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces The architecture of the denoiser. The weights between the layers do not represent the real structure of the model. The number of actual trainable parameters is 33049.}}{16}{figure.2.3}}
+\newlabel{fig:denoiser_architecture}{{2.3}{16}{The architecture of the denoiser. The weights between the layers do not represent the real structure of the model. The number of actual trainable parameters is 33049}{figure.2.3}{}}

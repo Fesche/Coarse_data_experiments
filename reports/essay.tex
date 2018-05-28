@@ -1,0 +1,250 @@
+
+\documentclass[12pt, american]{article}
+%\usepackage{duomasterforside}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[]{algorithm2e}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage[section]{placeins}
+\usepackage{array}
+\usepackage{caption}
+\graphicspath{ {../../figs/} }
+
+
+\title{Master Thesis Essay}
+\author{Bjørn Ingeberg Fesche}
+
+\begin{document}
+\maketitle
+\abstract
+The increasing market share of electric vehicles in Norway is threatening to put great strain on the power grid. Increasing adaption of solar and wind energy sources only adds to this strain, resulting in a demand for new solutions in the grid. In this context Norway is rolling out advanced metering infrastructure (AMI), which will enable operators to get a detailed view of the grid in near real time. We propose that it is plausible for operators to gather precise statistics on electric vehicles in Norway through AMI data. We introduce the technologies involved, as well as the field of non-intrusive load monitoring, and some methods which may serve as basic tools in pursuing our goal. Finally, we lay a plan for how we may proceed in developing and testing different approaches.
+
+\tableofcontents
+\section{Introduction}
+%Write about the green shift generally, as well as the adoption of electric vehicles and smart grid technologies which comes along. Explain some of the challenges which come with more EVs,
+Slowly, but surely, the world has awoken to the realities of climate change. The movement of politics has been even more glacial. Today however, climate change is a mainstay in politics, with parties focused on the issue appearing in democratic states all over the world. The political environmental network Global Greens claim as of 2018 to have 75 member parties as well as 19 associate member parties \cite{GlobalGreens}, and most UN member states have since 2016 committed to reducing their environmental impact through the Paris Agreement\cite{UNFCCC2015}. A greener future is on the global agenda.
+
+In Norway, the government has made sweeping, albeit general commitments to reduce the emission of greenhouse gases during the coming four decades through the initiative known as the Green Shift\cite{NorwegianMinistryofClimateandEnvironment2014}. It is in this context that the two societal changes around which my thesis is built came to be. 
+
+The first of these changes is the widespread adaption of electric vehicles (EVs) by private motorists, the second is the governmentally mandated mass deployment of automated metering infrastructure (AMI), also known as smart meters. The former of these factors will most likely make a positive societal impact, but also requires demanding infrastructural upgrades. The latter represents one such upgrade, but the exact extent of its utility remains to be discovered. 
+
+In the following sections we will introduce a few problems and potential solutions concerning these technologies, as well as outline a specific goal for the rest of my thesis.
+
+\subsection{Advanced Metering}
+
+AMI, also called AMS (Advanced Metering System) or simply smart meters (I will use the former two terms to refer to the nationwide system of measuring devices, and the latter to refer to the devices themselves), refers to any measuring equipment of electric energy consumption capable of two-way communication. In Norway, the AMI rollout is scheduled to be completed by January 2019. This follows a largely apolitical global trend, with among others the European Union committing to rolling out 200 million smart meters by 2020 \cite{EuropeanCommision2018}. 
+
+The Norwegian meters are mandated to measure power every 2.5 seconds locally. However, due to hardware limitations as well as privacy concerns, it is unlikely that data at this frequency will be available from arbitrary customers to the power companies. For this thesis, we will therefore focus on the analysis of coarser data, and assume only that the meters will be capable of reporting net consumption to the power company every 15 minutes. See \autoref{fig:consumption_1} for a sample day of consumption measurements as they will appear to a grid operator.
+
+\begin{figure}[h]
+\centering
+\def\svgwidth{\columnwidth}
+\caption{Power consumption for a house in Texas on a sample day, reported at 15 minute intervals. Although the granularity of the signal seems fine at this resolution, much information may already be lost. Data from the Pecan Street database}
+\includegraphics[scale=0.6]{EV_stats/sample_daily_consumption.pdf}
+\label{fig:consumption_1}
+\end{figure}
+
+
+\subsection{Electric Vehicles}
+
+EVs (more recently also so-called plug-in hybrid electric vehicles (PHEVs), we will sometimes use EV to refer to all chargeable cars) have taken the Norwegian car market by storm. Fuelled by generous incentives such as a 100\% reduction in all non-recurring vehicle fees, the national EV and PHEV marked share has risen from practically none in 2010 to almost to 40\% in 2017\cite{Norskelbilforening2018}. By comparison, the world market share of EVs and PHEVs stands as of 2017 at 1.3\%\cite{EVvolu}. \autoref{fig:norwegian_evs} shows the increase in privately owned EVs in Norway during the last ten years. In equal measure to its reduction in transport sector fossil fuel consumption, this domestic explosion in EVs will put great demand on the power grid. 
+
+\begin{figure}[h]
+\centering
+\def\svgwidth{\columnwidth}
+\caption{The growth in the number of privately owned Norwegian EVs has seen a sharp increase over the last decade. Numbers from the Norwegian Bureau of Statistics}
+\includegraphics[scale=0.6]{EV_stats/norwegian_evs.pdf}
+\label{fig:norwegian_evs}
+\end{figure}
+
+In Norway, typical EV chargers can draw anything from 2.5kW (regular household power outlet) to 43kW. Even at the relatively modest 2.5kW, this will usually mean that most of a household's energy consumption at charging time will go to the EV. To make things worse, it is likely that car owners in general will follow similar charging patterns, shaped by common daily routines, possibly causing huge daily surges in power consumption. Such surges may cause damage to transmission equipment, as well as drops in voltage quality. Coupled with a power grid increasingly reliant on unreliable power sources such as wind and solar, this also means that innovative solutions are needed to dynamically balance production and consumption, and maintain power quality.
+
+Several such solutions are being proposed and developed. Within the challenges facing grid operators with the coming of widespread EV adaption, lies also great opportunity. A great potential benefit of a large EV fleet comes for example from the elasticity of its power use. EVs generally have relatively large batteries, and for many car owners daily commuting may only use a fraction of total capacity. This allows for more flexible charging times, meaning that the individual cars may offset their charging to avoid exacerbating power usage peaks. It seems likely that with some demand response measures, the aggregate charging curve can be flattened considerably \cite{Babrowski2014}.
+
+Another promising aspect is Vehicle-to-Grid (V2G) technology. Implementation would allow cars to sell their surplus battery charge back to the grid at times of high demand, alleviating grid stress. However, there is some doubt as to whether such an approach would be economical, given the deterioration of car batteries from frequent discharging\cite{Mullan2012a}.
+
+Either way, the task of properly handling a large fleet of personal EVs will require statistics and insight. Things such as car distribution, car owner behavior, and charging patterns will be of great importance to policy makers, power grid operators, and the car industry. AMI technology will grant enormous amounts of data about the power use of individual households. While some work has been done on estimating individual appliance and even specifically EV power consumption from AMI data, little has so far been done with the goal of creating reliable statistics on charging behavior. Extracting such meaning from the torrent of AMI information is an important step towards a smarter power grid.
+
+\subsection{This report}
+In this report we will discuss possible solutions to our problem, and describe the course of research going forward.  In \autoref{sec:NILM}, we provide a short introduction to the related field of nonintrusive load monitoring (NILM) and the results achieved there. Methods which have proven successful in NILM will be introduced, and their applicability for our purposes determined. Specifically, \ref{sec:pattern_matching} deals with pattern matching, \ref{sec:hmm} deals with hidden markov models, and the more lengthy \ref{sec:ann} deals with a few flavors of artificial neural networks. Upon finishing the report, the reader will hopefully be convinced of the soundness of our goals, and be equipped with the basic tools with which to attempt to achieve them.
+
+\section{Methods}
+\subsection{Signal Disaggregation and NILM}
+\label{sec:NILM}
+The task at hand is therefore to effectively gather data on EV charging behavior. While some EVs may charge regularly at charging stations, which record their use, this will certainly not be the case for all EVs all the time. The omnipresent AMI on the other hand, will in theory record close to every charging of an EV. The issue with using AMI data to gain knowledge about EVs is, of course, that the smart meters do not actually separate between EVs and any other type of power draining appliance. The Norwegian law on smart meters (Regulation on measurements and billing of electrical consumption etc.  §4-2), only specifies that the meters should report active and reactive power produced and generated by the customer. To discover the characteristics of EVs in the grid, a proposed method must therefore be able to discover charging cycles in an aggregate power signal such as this. Luckily, much work has been done on similar problems of power signal disaggregation.
+
+In a seminal 1992 paper\cite{Hart1992}, %shouldweinclude this? no citation is actually needed%
+ George Hart showed that the problem of reducing an aggregate signal into its constituent parts of $n$ appliances is reducible to the combinatorial problem \begin{equation}
+\hat{a}(t) = \underset{a}{\operatorname{argmax}} \big|P(t) - \sum\limits_{i=1}^n a_{i}P_{i}\big|
+\label{eq:disaggregation_formula}
+\end{equation}
+where a(t) is an $n$ vector with $a_{i}(t) = 1$ if appliance $i$ is on at time $t$, and 0 otherwise, $P(t)$ is the aggregate signal at time $t$, and $P_i$ is the power consumed by appliance $i$ when turned on. This is a weighted variant of the set-cover problem, a classical NP-complete problem\cite{Garey1979}. Therefore, solving the problem with any reasonable degree of efficiency requires methods of approximation. Hart's solution used clustering of step changes in the aggregate signal along with finite state machines to find $a(t)$. Should the active/reactive power signature of EV chargings turn out to be sufficiently unique, this method may yet be preferable to data-driven techniques.
+
+The paper spawned the research area of NILM (non-intrusive load monitoring), named for its title, which is concerned with discovering disaggregating a signal without installing any additional measurment hardware (see \autoref{fig:disagg_1}). This area has, since the early signs that widespread adaption of AMI was imminent at the turn of the century, received much attention\cite{RevueltaHerrero2018}. The focus of the recent development in NILM has largely been on data-driven methods. It has been fueled in part by large, new datasets such as the Reference Energy Disaggregation Data Set (REDD)\cite{Kolter2011}, the UK Domestic Appliance-Level Electricity dataset (UK-DALE)\cite{Kelly2015}, and the Pecan Street Dataport data set\cite{Pecan2018}. These data sets all include power consumption data at second- or minute-level frequencies for individual households, as well as many or all of the appliances in those houses. This allows complex statistical models to be trained in a supervised way to do disaggregation, as indeed they have been with some success\cite{Kelly2015c,RevueltaHerrero2018}. \autoref{table:lit} shows an overview of some results from NILM and related areas of study.
+ 
+\begin{figure}[h]
+\centering
+\def\svgwidth{\columnwidth}
+\caption{The goal of NILM is to disaggregate a power signal into the signals of the individual appliances of which it consists. Appliance 1 is fairly typical of an EV, both in power use and proportion relative to the remaining household consumption.}
+\includegraphics[scale=0.6]{Other/sample_disagg.pdf}
+\label{fig:disagg_1}
+\end{figure}
+
+Note that the task of finding EVs in an aggregate signal differs from NILM in that we don't care about the non-EV parts of the signal. Although the results from NILM are important to understanding the problem at hand, in its essence, the discovery of EV charging cycles in an aggregate signal is one of signal discovery, devoid of the combinatoric headaches of NILM.
+
+\begin{table}
+  \caption{A selection of relevant results. Note that all of these use sample rates which are considerably higher than those available to a grid operator. In addition to the sample rate, these studies also vary in other factors, such as number of appliances considered. }
+  \label{table:lit}
+  
+  \begin{tabular}{ | >{\centering\arraybackslash}m{1.5cm}  >{\centering\arraybackslash}m{4cm}  >{\centering\arraybackslash}m{4cm}  >{\centering\arraybackslash}m{5cm} |}
+    \hline
+    
+    \textbf{Authors} & \textbf{Purpose} & \textbf{Method} & \textbf{Result}\\ \hline\hline
+    \textbf{Hart} & Full disaggregation (60Hz) & Clustering step changes and finite state machine & Not reported ("[...] only a small fraction of the events are missed.")\\ \hline
+    
+    \textbf{P. Zhang et al.} & Full disaggregation in the presence of EV charging (1Hz) & Pattern matching & 94.5\% accuracy\\ \hline
+    
+    \textbf{Jia et al.} & Full disaggregation without knowledge of the type or number of appliances (15kHz) & Nonparametric factorial hidden markov model & 98.5\% accuracy \\ \hline
+    
+    \textbf{Kelly} & Single appliance signal detection (1/6Hz) & Convolutional, recurrent, and autoencoding neural networks & 55\% F1-score, 97\% accuracy \\ \hline
+    
+    \textbf{Z. Zhang et al.} & Estimation of EV power consumption from aggregate signal (1/60Hz) & Rule-based thresholding and filtering & 92.5\% power correctly assigned \\ \hline
+    
+  \end{tabular}
+\end{table}
+
+\subsection{Approaches}
+The gradual worldwide rollout of AMI happens at what can only be described as a golden age of machine learning. As mentioned in \autoref{sec:NILM}, the large datasets of appliance and household power measurements provide opportunity to create complex, and therefore data-intensive machine learning models. Much work has been done on the disaggregation of high-frequency data. Some of the methods used, like fourier harmonics analysis, are less useful with a sampling rate in the minutes. Others are applicable.
+
+Data-driven methods can generally be divided into two categories, both of which are applicable to signal discovery. Supervised methods use a target output to gauge a model's fit, and adjusts the weights of the model accordingly. Unsupervised models attempt to find natural structures in data, without any target output. Models trained in a supervised fashion are usually more powerful, but require reliable target data (for example appliance measurements). Unsupervised models are in a sense more robust, since they are not dependent on limited datasets of targets, and so can train e.g. on the raw smart meter outputs. 
+
+\subsubsection{Pattern Matching}
+\label{sec:pattern_matching}
+When looking for an EV charging cycle hidden in an aggregate signal, the non-EV parts of the signal will be structured, but by \autoref{eq:disaggregation_formula}, too complex to efficiently decipher. It may therefore be useful for now to consider the remaining signal simply as noise. In classical electronic signal processing, a technique known as a matched filter is a well-studied way of discovering signals hidden in noise. Commonly used in radar, matched filters are shown to be the optimal linear filters for maximizing the signal-to-noise ratio. This assumes however, that the noise is white and additive\cite{Turin1960}. In our case, only the latter is true. 
+
+The digital equivalent of using a matched filter is taking the cross-correlation between a template signal to be discovered, and an aggregate signal, at every point of the aggregate (see \autoref{fig:matched_filter_1}). This again is equivalent with convolving the time-reversed conjugate of the template over the aggregate signal. \autoref{eq:cross_corr} shows the general formula for the cross-correlation between two signals $f$ and $g$ at point $n$, where $f^*$ denotes the complex conjugate of $f$. Relatively fast and simple to implement, pattern matching has been used to great effect in discovering EV charging cycles in aggregate signals \cite{Zhang2011}.
+
+\begin{equation}
+(f\star g)[n] = \sum\limits_{-\infty}^{\infty} f^*[m]g[n-m]
+\label{eq:cross_corr}
+\end{equation}
+
+\begin{figure}[h]
+\centering
+\def\svgwidth{\columnwidth}
+\caption{A filter, constructed by taking the significant parts of the signal of appliance 1, is convolved over the aggregate signal. The output correlation is normalized to the plot, and does not represent any real size.}
+\includegraphics[scale=0.6]{Other/sample_mf.pdf}
+\label{fig:matched_filter_1}
+\end{figure}
+
+\subsubsection{Hidden Markov Machines}
+\label{sec:hmm}
+Hidden Markov Machines (HMMs) are a class of models which lend themselves well to NILM, and so are well-studied and often used as benchmarks. Assuming that you have a time series of  observable outputs, which are dependent on a hidden state, a HMM is simply a model to try to model this state given the output. In NILM, the state is the active appliances, and the output is a power signal.
+
+Like Hart's finite state machines, HMMs can be though of as automatons, and described formally by a five-touple: 
+\begin{equation}
+\label{eq:hmm_touple}
+\langle Q, A, O, B, q_{0}, q_{F}\rangle
+\end{equation}
+Where $Q = q_{1},q_{2},...,q_{n}$ is the set of states, $A = a_{11},a_{12},...,a_{n1},...a_{nn}$ is the set of transition probabilities, $O = o_{1},o_{2},...,o_{T}$ are the observed values from time $1$ to $T$, $B = \{b_{i}(o_{t})$ is the sequence of likelihoods of an observation $o_{t}$ given a state $i$, and $q_{0}$ and $q_{F}$ are the start and end states respectively.
+
+Specialized dynamic programming techniques exist to train and decode HMMs, and they have been used successfully for disaggregation tasks, even with just an aggregate power signal and no appliance-level measurements\cite{Jia2015}.
+
+\subsubsection{Artificial Neural Networks}
+\label{sec:ann}
+An artificial neural network (ANN) is a class of  non-parametric statistical models. In their simplest form, ANNs consist of linear transformations chained together by nonlinear functions. The transformations are the weights of the model. When they contain more than one linear transformation such chains, perhaps surprisingly, form universal approximators. More importantly, they can be trained in a supervised manner by back-propagating the gradient of the loss function with regards to the weights through the chain and adjusting the weights accordingly\cite{Rumelhart1986}.
+
+A common way of describing ANNs are as graphs, in terms of nodes, edges, and layers. In this analogy, the edges are the weights of the model, the nodes are where the nonlinear functions are applied, and each layer is a linear transformation plus its nonlinear function. The first and last layers are usually called the input- and output-layers respectively, while the others are called "hidden" layers. \autoref{fig:ann} shows a small ANN with a single hidden layer, and explains all calculations done when predicting an input.
+
+\begin{figure}[h]
+\centering
+\caption{An artificial neural network with one hidden layer. The input consists of two variables; the hidden layer has three nodes with a sigmoid "activation" (nonlinear) function, and the output layer consists of a single node with no activation. The boxes indicate weights and calculations done during prediction.}
+\includegraphics[scale=0.9]{neural_nets/ann.pdf}
+\label{fig:ann}
+\end{figure}
+
+
+Among the methods which shape the current golden age of machine learning, none are more prominent than the ANNs. Since the advent of deep learning in 2012\cite{Krizhevsky2012}, they have become almost synonymous with research in artificial intelligence. Despite their celestial aspirations however, smaller ANNs remain versatile and flexible  non-parametric models, applicable whenever insight into exact relations is less important than predictive power. NILM is no exception, and neural nets have been used to great effect\cite{Kelly2015c,RevueltaHerrero2018}. Many different flavors exist, and we will discuss the most relevant in the following subsections.
+
+\paragraph{Convolutional Neural Networks}\mbox{}\\
+
+\noindent Convolutional ANNs (Convnets), are ANNs with one or more convolutional layer. A convolutional layer consists of a number of filters of a given size. These filters slide over the input, producing an output at each step based on the currently covered input values and a set of filter weights(see \autoref{fig:convnet}). The size of the output of the layer is dependent on the size of the filter, as well as the number of "steps" between each point in the convolution. With multiple filters, a new dimension is also added to the output.
+
+\begin{figure}[h]
+\centering
+\caption{A single filter sliding over a one-dimensional input. The filter values $f_{00}$ to $f_{03}$ are the trainable weights, and $out_{00}$ to $out_{0n}$ are the filter outputs.}
+\includegraphics[scale=0.5]{neural_nets/convnet.pdf}
+\label{fig:convnet}
+\end{figure}
+
+A main feature of convnets is that the convolutional layers can discover features based on gradients in the data. For example, with a power signal as input, the filters could be trained to look for different types of cliffs and jumps in the consumption. This kind of change-based analysis has long been used in NILM to discern different appliances as they are toggled\cite{Hart1992,Sultanem1991}. Kelly et al. found that convnets outperformed autoencoders and recurrent networks in a signal discovery task \cite{Kelly2015c}.
+
+\paragraph{Autoencoders}\mbox{}\\
+
+\noindent An autoencoder (AE) is an ANN which attempts to find a lower-dimensional representation of the input. They come in many shapes, but in common they have a hidden layer smaller than the input layer, and an output layer of the same size as the input layer. By training them with the same input and target, AEs learn to represent the input in the small hidden layer, so it can reconstruct it faithfully in the output. By removing the layers after the bottleneck, the net becomes an encoder.
+
+\begin{figure}[h]
+\centering
+\caption{A minimal autoencoder. The hidden layer creates a lower-dimensional representation of the input; the output layer attempts to recreate the input from the hidden layer's representation. Most AEs will have more layers, and can also use convolutional layers.}
+\includegraphics[scale=0.6]{neural_nets/autoencoder.pdf}
+\label{fig:autoencoder}
+\end{figure}
+
+Denoising autoencoders (dAEs) were first invented as a way of improving AEs. By polluting the input signal with noise and training on unpolluted targets, the dAEs were supposed to learn more robust representations. However, these models can just as well be used for denoising, which, after all is what they are trained to do. Again adopting the noise perspective on EV signal discovery, dAEs can ideally be used to separate the EV signal from the remainder. However, earlier attempts to use this approach have not been successful. Generally, the dAE succeeds in reconstructing the target, but is confused by non-relevant parts of the aggregate signal. \cite{Kelly2015c}.
+
+\paragraph{Recurrent Neural Networks}\mbox{}\\
+
+\noindent 
+Recurrent neural networks (RNNs) are, at their core, ANNs which remember previous inputs. The most common variants, like long short term memory networks (LSTMs), have special trainable gates dedicated to determining which part of the previous inputs to remember. RNNs also generate output at each step of their computation. This makes RNNs excellent at handling sequential data, and in domains like text, speech, or film, they have shown to be far superior to other kinds of ANN.\cite{Lecun2015}.
+
+In the case of signal discovery, the data is of course sequential, and so RNNs may be useful, especially in the case where the aggregate power series consist of days or weeks of contiguous measurements. It is possible that an RNN can take into consideration temporal variables such as frequency and time of day, modeling the probability as a function of the charging behavior of the car owner as well as the defining features of the charging signal itself. Although Kelly et al. \cite{Kelly2015c} concluded that their RNN did not perform convincingly, their feasibility as a disaggregation approach have since been demonstrated \cite{Mauch2016}.
+
+\begin{figure}[h]
+\centering
+\caption{A simple model of an RNN. At each point in the input sequence, the model takes the gated previous inputs as well as the current input and produces an output as well as the memory for the next step. RNNs can have many layers, but the weights are the same for each step.}
+\includegraphics[scale=0.7]{neural_nets/rnn.pdf}
+\label{fig:rnn}
+\end{figure}
+
+\section{Work Plan}
+\subsection{Gathering Data}
+As mentioned in \autoref{sec:NILM}, there are several datasets containing household power measurements at equal to or higher than the resolution of Norwegian AMI. For our purposes, the data should ideally contain both reactive and active power measurements for EVs and household aggregates. Data sets without EV measurements may still be useful, since battery charging can in theory be simulated, but recreating a natural household consumption pattern would be difficult.
+
+The Individual household electric power consumption Data Set from the University of California Irvine School of Informatics' Machine Learning Repository\cite{Dheeru2017} contains both reactive and active power measurements at minute-level resolution for one house from 2006 and 2010. 
+
+The Almanac of Minutely Power dataset\cite{Makonin2016} contains both aggregate and appliance-level active and reactive power measurements for a house in Canada from 2012 to 2014, but does not include an EV outlet.
+
+Pecan Street provides by far the largest dataset of household electricity consumption measurements. Their Dataport database contains aggregate and appliance-level records from over 1400 hundred houses in the US and spanning more than seven years\cite{Pecan2018}. The data only provides active power, but there are several houses with EV submeter measurements.
+
+All three datasets may prove valuable and should be included in analysis. The former two can be used to explore signal discovery in the active/reactive power space, while Pecan street's sheer size and EV records makes it perfect for testing simpler models based on active power.
+
+\subsection{Analysis}
+The focus of my analysis will be the effectiveness of different methods in discovering EV charging cycles in aggregate power data. The methods will be trained to locate these training cycles in time series consisting of days or months of measurements. A gold standard will consist either of actual EV measurements, as in the Pecan Street dataset, or from simulated EV charging embedded in aggregate data. The performance of the methods will be measured by comparing their results with this gold standard and calculating the precision and recall. The models will be judged primarily on their F1-score, the harmonic mean of precision and recall. F1 is a common measure in NILM, preferable to a simple mean because it puts most weight on the lowest of the inputs. Optimizing models for either precision or recall may also prove interesting. Common benchmarks in NILM include combinatorial optimization and HMMs. Should these models be adaptable to signal discovery, they will be used as benchmarks.
+
+\begin{equation}
+\label{eq:precision}
+\text{Precision} = \frac{\text{True positives}}{\text{All predicted positives}}
+\end{equation}
+\begin{equation}
+\label{eq:recall}
+\text{Recall} = \frac{\text{True positives}}{\text{All real positives}}
+\end{equation}
+\begin{equation}
+\label{eq:F1}
+\text{F1-score} = 2*\frac{\text{precision}*\text{recall}}{\text{precision}+\text{recall}}
+\end{equation}
+
+\section{Summary and Conclusion}
+We have shown the usefulness and feasibility of gathering quantitative information about electric vehicles in the Norwegian power grid through the new AMI system. We have also identified some promising approaches and explained their strengths. Our success in exploring these approaches will be determined by their performance compared to benchmark methods, as well as a discussion of their utility in actual smart grid operation.
+
+The focus in literature on high resolution data and household-level disaggregation, rather than the low resolution grid-level data available to grid operators makes this a promising area for novel research. The national power grid has been called both the most complex machine ever built and the greatest achievement of the 20th century. Any reform as great as the one underway in Norway and other parts of the world is thus bound to be a significant challenge, and one that it is necessary to get right. It is our hope that in enabling grid operators to see more clearly through their newly acquired AMI lenses, this challenge can be solved more smoothly and effectively.
+
+\pagebreak
+
+\bibliography{C:/Users/bfesc/Documents/BibTeX_files/library}{}
+
+\bibliographystyle{acm}
+\end{document}

@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+#large datafiles and other junk
+*.csv
+*.dat
+*.h5
+
 # Distribution / packaging
 .Python
 env/

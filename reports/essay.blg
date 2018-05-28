@@ -1,0 +1,34 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: essay.aux
+The style file: acm.bst
+Database file #1: C:/Users/bfesc/Documents/BibTeX_files/library.bib
+Repeated entry---line 497 of file C:/Users/bfesc/Documents/BibTeX_files/library.bib
+ : @book{Garey1979
+ :                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 510 of file C:/Users/bfesc/Documents/BibTeX_files/library.bib
+ : @article{Hart1992
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 546 of file C:/Users/bfesc/Documents/BibTeX_files/library.bib
+ : @article{Zhang2011
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 560 of file C:/Users/bfesc/Documents/BibTeX_files/library.bib
+ : @article{Kelly2015c
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 626 of file C:/Users/bfesc/Documents/BibTeX_files/library.bib
+ : @incollection{RevueltaHerrero2018
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 658 of file C:/Users/bfesc/Documents/BibTeX_files/library.bib
+ : @article{Kelly2015
+ :                   ,
+I'm skipping whatever remains of this entry
+Name 1 in "{Garey, M. R.}, and D. S. Johnson" has a comma at the end for entry Garey1979
+while executing---line 1092 of file acm.bst
+Warning--to sort, need author or key in Pecan2018
+Warning--empty journal in EuropeanCommision2018
+Name 1 in "{Garey, M. R.}, and D. S. Johnson" has a comma at the end for entry Garey1979
+while executing---line 1133 of file acm.bst
+(There were 8 error messages)

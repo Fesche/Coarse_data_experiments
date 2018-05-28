@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Advanced Metering}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Electric Vehicles}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}This report}{5}{subsection.1.3}
+\contentsline {section}{\numberline {2}Methods}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Signal Disaggregation and NILM}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Approaches}{9}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Pattern Matching}{9}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Hidden Markov Machines}{10}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Artificial Neural Networks}{11}{subsubsection.2.2.3}
+\contentsline {paragraph}{Convolutional Neural Networks}{11}{section*.8}
+\contentsline {paragraph}{Autoencoders}{13}{section*.10}
+\contentsline {paragraph}{Recurrent Neural Networks}{14}{section*.12}
+\contentsline {section}{\numberline {3}Work Plan}{15}{section.3}
+\contentsline {subsection}{\numberline {3.1}Gathering Data}{15}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Analysis}{16}{subsection.3.2}
+\contentsline {section}{\numberline {4}Summary and Conclusion}{16}{section.4}
