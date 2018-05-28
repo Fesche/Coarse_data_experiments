@@ -8,10 +8,10 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Pattern Matching}{9}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}Hidden Markov Machines}{10}{subsubsection.2.2.2}
 \contentsline {subsubsection}{\numberline {2.2.3}Artificial Neural Networks}{11}{subsubsection.2.2.3}
-\contentsline {paragraph}{Convolutional Neural Networks}{11}{section*.8}
-\contentsline {paragraph}{Autoencoders}{13}{section*.10}
-\contentsline {paragraph}{Recurrent Neural Networks}{14}{section*.12}
-\contentsline {section}{\numberline {3}Work Plan}{15}{section.3}
-\contentsline {subsection}{\numberline {3.1}Gathering Data}{15}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Analysis}{16}{subsection.3.2}
-\contentsline {section}{\numberline {4}Summary and Conclusion}{16}{section.4}
+\contentsline {paragraph}{Convolutional Neural Networks}{12}{section*.8}
+\contentsline {paragraph}{Autoencoders}{13}{section*.11}
+\contentsline {paragraph}{Recurrent Neural Networks}{14}{section*.13}
+\contentsline {section}{\numberline {3}Work Plan}{16}{section.3}
+\contentsline {subsection}{\numberline {3.1}Gathering Data}{16}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Analysis}{17}{subsection.3.2}
+\contentsline {section}{\numberline {4}Summary and Conclusion}{17}{section.4}

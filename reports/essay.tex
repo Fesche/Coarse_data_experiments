@@ -42,7 +42,7 @@ The Norwegian meters are mandated to measure power every 2.5 seconds locally. Ho
 \begin{figure}[h]
 \centering
 \def\svgwidth{\columnwidth}
-\caption{Power consumption for a house in Texas on a sample day, reported at 15 minute intervals. Although the granularity of the signal seems fine at this resolution, much information may already be lost. Data from the Pecan Street database}
+\caption{Power consumption for a house in Texas on a sample day, reported at 15 minute intervals. Although the granularity of the signal seems fine at this resolution, much information may already be lost. Data from the Pecan Street database.}
 \includegraphics[scale=0.6]{EV_stats/sample_daily_consumption.pdf}
 \label{fig:consumption_1}
 \end{figure}
@@ -157,21 +157,48 @@ Specialized dynamic programming techniques exist to train and decode HMMs, and t
 \label{sec:ann}
 An artificial neural network (ANN) is a class of  non-parametric statistical models. In their simplest form, ANNs consist of linear transformations chained together by nonlinear functions. The transformations are the weights of the model. When they contain more than one linear transformation such chains, perhaps surprisingly, form universal approximators. More importantly, they can be trained in a supervised manner by back-propagating the gradient of the loss function with regards to the weights through the chain and adjusting the weights accordingly\cite{Rumelhart1986}.
 
-A common way of describing ANNs are as graphs, in terms of nodes, edges, and layers. In this analogy, the edges are the weights of the model, the nodes are where the nonlinear functions are applied, and each layer is a linear transformation plus its nonlinear function. The first and last layers are usually called the input- and output-layers respectively, while the others are called "hidden" layers. \autoref{fig:ann} shows a small ANN with a single hidden layer, and explains all calculations done when predicting an input.
+A common way of describing ANNs are as graphs, in terms of nodes, edges, and layers. In this analogy, the edges are the weights of the model, the nodes are where the nonlinear functions are applied, and each layer is a linear transformation plus its nonlinear function. The first and last layers are usually called the input- and output-layers respectively, while the others are called "hidden" layers. \autoref{fig:ann} shows a small ANN with a single hidden layer, and explains all calculations done when predicting an input. \autoref{eq:ann} shows the same net in matrix notation, with $\sigma$ being the sigmoid function applied element-wise.
 
 \begin{figure}[h]
 \centering
-\caption{An artificial neural network with one hidden layer. The input consists of two variables; the hidden layer has three nodes with a sigmoid "activation" (nonlinear) function, and the output layer consists of a single node with no activation. The boxes indicate weights and calculations done during prediction.}
+\caption{An artificial neural network with one hidden layer. The input consists of two variables; the hidden layer has three nodes with a sigmoid activation (nonlinear) function, and the output layer consists of a single node with no activation. The boxes indicate weights and calculations done during prediction.}
 \includegraphics[scale=0.9]{neural_nets/ann.pdf}
 \label{fig:ann}
 \end{figure}
+
+\begin{equation}
+	\label{eq:ann}
+	output = 
+	\sigma\Bigg[
+	\begin{pmatrix}
+	x_{0} \\
+	x_{1} \\
+	\end{pmatrix} \times
+	\begin{pmatrix}
+	w_{00} & w_{10} \\
+	w_{01} & w_{11} \\
+	w_{02} & w_{12} \\
+	\end{pmatrix}\Bigg]\times
+	\begin{pmatrix}
+	w_{20}  \\
+	w_{30}  \\
+	w_{40}  \\
+	\end{pmatrix}
+\end{equation}
 
 
 Among the methods which shape the current golden age of machine learning, none are more prominent than the ANNs. Since the advent of deep learning in 2012\cite{Krizhevsky2012}, they have become almost synonymous with research in artificial intelligence. Despite their celestial aspirations however, smaller ANNs remain versatile and flexible  non-parametric models, applicable whenever insight into exact relations is less important than predictive power. NILM is no exception, and neural nets have been used to great effect\cite{Kelly2015c,RevueltaHerrero2018}. Many different flavors exist, and we will discuss the most relevant in the following subsections.
 
 \paragraph{Convolutional Neural Networks}\mbox{}\\
 
-\noindent Convolutional ANNs (Convnets), are ANNs with one or more convolutional layer. A convolutional layer consists of a number of filters of a given size. These filters slide over the input, producing an output at each step based on the currently covered input values and a set of filter weights(see \autoref{fig:convnet}). The size of the output of the layer is dependent on the size of the filter, as well as the number of "steps" between each point in the convolution. With multiple filters, a new dimension is also added to the output.
+\noindent Convolutional ANNs (Convnets), are ANNs with one or more convolutional layer. A convolutional layer consists of a number of filters of a given size. These filters slide over the input, producing an output at each step based on the currently covered input values and a set of filter weights (see \autoref{fig:convnet}). \autoref{eq:conv} formally describes the convolution of a filter $g$ over an input $f$. Note the similarity with \autoref{eq:cross_corr}. 
+
+The size of the output of a layer is dependent on the size of the filter, as well as the number of steps between each point in the convolution. With multiple filters, a new dimension is also added to the output. \autoref{fig:convnet_2} shows a diagram of a convnet with two convolutional layers, taking eleven variables as input and returning a single output.
+
+\begin{equation}
+(f\star g)[n] = \sum\limits_{m=-M,\textit{ then }m+step}^{M} f[n-m]g[m]
+\label{eq:conv}
+\end{equation}
 
 \begin{figure}[h]
 \centering
@@ -179,6 +206,14 @@ Among the methods which shape the current golden age of machine learning, none a
 \includegraphics[scale=0.5]{neural_nets/convnet.pdf}
 \label{fig:convnet}
 \end{figure}
+
+\begin{figure}[h]
+\centering
+\caption{A convnet with two convolutional layers and a fully connected layer. The transparent first two rows of squares illustrate the first and second 1x3-filter of the first layer at the first and second steps respectively (note that this means that the layer has a filter step size of 2). The second layer has three channels, one for each filter in the first layer. It also has a single 3x2-filter with a step size of 1, meaning the last hidden layer has four nodes.}
+\includegraphics[scale=0.5]{neural_nets/convnet2.pdf}
+\label{fig:convnet_2}
+\end{figure}
+
 
 A main feature of convnets is that the convolutional layers can discover features based on gradients in the data. For example, with a power signal as input, the filters could be trained to look for different types of cliffs and jumps in the consumption. This kind of change-based analysis has long been used in NILM to discern different appliances as they are toggled\cite{Hart1992,Sultanem1991}. Kelly et al. found that convnets outperformed autoencoders and recurrent networks in a signal discovery task \cite{Kelly2015c}.
 
